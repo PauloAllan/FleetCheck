@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Veículo</title>
+</head>
+<body>
+    <h1>Editar Veículo</h1>
+
+    <form method="post">
+        <label>Placa:</label><br>
+        <input type="text" name="placa" value="{{ veiculo.placa }}" required><br><br>
+
+        <label>Motorista:</label><br>
+        <input type="text" name="motorista" value="{{ veiculo.motorista }}"><br><br>
+
+        <label>Status:</label><br>
+        <input type="text" name="status" value="{{ veiculo.status }}"><br><br>
+
+        <button type="submit">Salvar alterações</button>
+    </form>
+
+    <br>
+    <a href="/">⬅ Voltar</a>
+</body>
+</html>

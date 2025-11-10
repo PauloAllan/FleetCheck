@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Realizar Checklist</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <h1>🧾 Checklist de Veículo</h1>
+
+    <form method="post">
+        <!-- Seleção do veículo -->
+        <label>Veículo:
+            <select name="veiculo_id" required>
+                <option value="">-- Selecione o veículo --</option>
+                {% for v in veiculos %}
+                    <option value="{{ v.id }}">{{ v.placa }} — {{ v.motorista or 'Sem motorista' }}</option>
+                {% endfor %}
+            </select>
+        </label>
+
+        <!-- Itens do checklist -->
+        <label>Bateria:</label>
+        <div class="radio-group">
+            <label><input type="radio" name="bateria" value="aprovado" required> Aprovado</label>
+            <label><input type="radio" name="bateria" value="reprovado"> Reprovado</label>
+        </div>
+
+        <label>Pneu:</label>
+        <div class="radio-group">
+            <label><input type="radio" name="pneu" value="aprovado" required> Aprovado</label>
+            <label><input type="radio" name="pneu" value="reprovado"> Reprovado</label>
+        </div>
+
+        <label>Elétrica:</label>
+        <div class="radio-group">
+            <label><input type="radio" name="eletrica" value="aprovado" required> Aprovado</label>
+            <label><input type="radio" name="eletrica" value="reprovado"> Reprovado</label>
+        </div>
+
+        <label>Motor:</label>
+        <div class="radio-group">
+            <label><input type="radio" name="motor" value="aprovado" required> Aprovado</label>
+            <label><input type="radio" name="motor" value="reprovado"> Reprovado</label>
+        </div>
+
+        <label>Qualidade:</label>
+        <div class="radio-group">
+            <label><input type="radio" name="qualidade" value="aprovado" required> Aprovado</label>
+            <label><input type="radio" name="qualidade" value="reprovado"> Reprovado</label>
+        </div>
+
+        <!-- Observações -->
+        <label>Observações:</label>
+        <textarea name="observacoes" rows="3"></textarea>
+
+        <button type="submit">Salvar Checklist</button>
+    </form>
+
+    <a href="{{ url_for('index') }}">⬅️ Voltar para a lista de veículos</a>
+</body>
+</html>
