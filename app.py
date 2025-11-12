@@ -191,3 +191,4 @@ def checklist():
     cur.close()
     conn.close()
     return render_template('checklist.html', veiculos=veiculos)
+
