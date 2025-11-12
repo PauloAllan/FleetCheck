@@ -1,8 +1,7 @@
 [build]
-builder = "paketobuildpacks/builder:base"
+buildType = "python"
 
-[phases.setup]
-apt_packages = ["libpq-dev"]
+[deploy]
+startCommand = "gunicorn --bind 0.0.0.0:${PORT:-8000} app:app"
 
-[start]
-cmd = "gunicorn --bind 0.0.0.0:${PORT:-8000} app:app"
+aptPackages = ["libpq-dev"]
