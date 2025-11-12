@@ -6,14 +6,13 @@ import datetime
 app = Flask(__name__)
 
 # --- Conexão com o banco PostgreSQL ---
-def get_db_connection():
-    # Tenta usar variável DATABASE_URL (Railway define automaticamente)
-    db_url = os.environ.get("DATABASE_URL")
+import os
 
+def get_db_connection():
+    db_url = os.environ.get("DATABASE_URL")
     if db_url:
         conn = psycopg2.connect(db_url)
     else:
-        # fallback local
         conn = psycopg2.connect(
             host="localhost",
             database="fleetcheck",
@@ -21,6 +20,7 @@ def get_db_connection():
             password="postgres"
         )
     return conn
+
 
 
 # --- Página inicial ---
