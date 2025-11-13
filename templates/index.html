@@ -124,9 +124,10 @@
                     <div class="small">
                         {% set validade = v.validade_checklist %}
                         {% if v.status == 'Aprovado' and validade %}
+                            {% set validade_date = validade.date() %}
                             <span class="status-aprovado">✅ {{ v.status }}</span>
-                            — válido até {{ validade.strftime('%d/%m/%Y') }}
-                            {% if validade < now().date() %}
+                            — válido até {{ validade_date.strftime('%d/%m/%Y') }}
+                            {% if validade_date < now().date() %}
                                 <span class="status-expirado">(Expirado)</span>
                             {% endif %}
                         {% elif v.status == 'Reprovado' %}
@@ -140,7 +141,6 @@
 
                 <div>
                     <a href="{{ url_for('edit_vehicle', id=v.id) }}" title="Editar">✏️</a>
-
                     <form action="{{ url_for('delete_vehicle', id=v.id) }}" method="post" style="display:inline;">
                         <button type="submit" class="icon-btn" title="Excluir" onclick="return confirm('Excluir veículo {{ v.placa }}?')">🗑️</button>
                     </form>
